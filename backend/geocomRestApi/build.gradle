@@ -12,8 +12,13 @@ buildscript {
 	}
 }
 
+plugins {
+	id 'io.franzbecker.gradle-lombok' version '1.11'
+	id 'java'
+}
+
 apply plugin: 'java'
-apply plugin: 'eclipse'
+apply plugin: 'idea'
 apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
 
@@ -34,4 +39,9 @@ dependencies {
 	compile('org.springframework.boot:spring-boot-starter-web')
 	runtime('mysql:mysql-connector-java')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
+}
+
+lombok {
+	version = "1.16.4"
+	sha256 = "3ca225ce3917eac8bf4b7d2186845df4e70dcdede356dca8537b6d78a535c91e"
 }
