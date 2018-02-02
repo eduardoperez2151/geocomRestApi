@@ -9,6 +9,7 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
@@ -24,6 +25,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+@ActiveProfiles("test")
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebMvcTest(value = RecipeController.class)
 public class RecipeControllerTest {
@@ -39,35 +41,12 @@ public class RecipeControllerTest {
     public void testRecipeControllerTest() throws Exception {
 
 
-        final IngredientDTO ingredient1 = IngredientDTO.builder()
-                .id(1l)
-                .amount(2d)
-                .name("onion")
-                .build();
-
-        final IngredientDTO ingredient2 = IngredientDTO.builder()
-                .id(1l)
-                .amount(3d)
-                .name("lettuce")
-                .build();
-
-
+        final IngredientDTO ingredient1 = getIngredient(1l,2d,"onion");
+        final IngredientDTO ingredient2 = getIngredient(2l,3d,"lettuce");
         final List<IngredientDTO> ingredientList = Stream.of(ingredient1, ingredient2).collect(Collectors.toList());
 
-        final RecipeDTO recipe = RecipeDTO.builder()
-                .id(1L)
-                .description("mom recipe")
-                .imagePath("imagePath")
-                .ingredients(ingredientList)
-                .build();
-
-        final RecipeDTO recipe2 = RecipeDTO.builder()
-                .id(2L)
-                .description("mom recipe")
-                .imagePath("imagePath")
-                .ingredients(ingredientList)
-                .build();
-
+        final RecipeDTO recipe = getRecipeDTO(1l,"mom recipe","imagePath",ingredientList);
+        final RecipeDTO recipe2 = getRecipeDTO(2l,"mom recipe","imagePath",ingredientList);
         final List<RecipeDTO> recipeList = Stream.of(recipe, recipe2).collect(Collectors.toList());
 
         when(this.recipeService.getAllRecipes()).thenReturn(recipeList);
@@ -82,5 +61,22 @@ public class RecipeControllerTest {
                 .andExpect(jsonPath("$.data[0].id", is(1)))
                 .andExpect(jsonPath("$.data[0].ingredients", hasSize(2)))
                 .andExpect(jsonPath("$.data[0].ingredients[1].name", is("lettuce")));
+    }
+
+    private RecipeDTO getRecipeDTO(final Long id, final String name, final String imagePath, final List<IngredientDTO> ingredientList) {
+        return RecipeDTO.builder()
+                    .id(id)
+                    .description(name)
+                    .imagePath(imagePath)
+                    .ingredients(ingredientList)
+                    .build();
+    }
+
+    private IngredientDTO getIngredient(final Long id, final Double amount, final String name) {
+        return IngredientDTO.builder()
+                .id(id)
+                .amount(amount)
+                .name(name)
+                .build();
     }
 }
