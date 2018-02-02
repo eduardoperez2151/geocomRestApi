@@ -25,8 +25,17 @@ public class ResponseAPI {
         return getResponseAPI(SUCCESS_CODE, SUCCESS_MESSAGE, data);
     }
 
-    public static <T> ResponseAPI error(T data) {
+    public static <T> ResponseAPI ok(final String message, T data) {
+        return getResponseAPI(SUCCESS_CODE, message, data);
+    }
+
+
+    public static <T> ResponseAPI error(final T data) {
         return getResponseAPI(ERROR_CODE, ERROR_MESSAGE, data);
+    }
+
+    public static <T> ResponseAPI error(final String message) {
+        return getResponseAPI(ERROR_CODE, message, null);
     }
 
     private static <T> ResponseAPI getResponseAPI(final String code, final String message, final T data) {
