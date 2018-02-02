@@ -1,8 +1,6 @@
 package com.geocom.services.implementation;
 
-import com.geocom.dtos.IngredientDTO;
 import com.geocom.dtos.RecipeDTO;
-import com.geocom.models.Ingredient;
 import com.geocom.models.Recipe;
 import com.geocom.repositories.RecipeRepository;
 import com.geocom.services.RecipeService;
