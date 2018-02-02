@@ -40,6 +40,7 @@ public class RecipeConverter implements Converter<Recipe, RecipeDTO> {
         return RecipeDTO.builder()
                 .id(recipe.getId())
                 .name(recipe.getName())
+                .imagePath(recipe.getImagePath())
                 .description(recipe.getDescription())
                 .ingredients((List<IngredientDTO>) conversionService.convert(recipe.getIngredients(), sourceType, targetType))
                 .build();

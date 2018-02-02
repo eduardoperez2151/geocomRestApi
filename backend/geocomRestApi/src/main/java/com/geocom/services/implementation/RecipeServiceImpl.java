@@ -37,7 +37,9 @@ public class RecipeServiceImpl implements RecipeService {
     @Override
     public RecipeDTO updateRecipe(final RecipeDTO recipeDTO) {
         this.getRecipeById(recipeDTO.getId());
-        return null;
+        final Recipe recipe = conversionService.convert(recipeDTO, Recipe.class);
+        final Recipe updatedRecipe = this.recipeRepository.save(recipe);
+        return conversionService.convert(updatedRecipe,RecipeDTO.class);
     }
 
     @Override

@@ -2,6 +2,7 @@ package com.geocom.models.abstracts;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.GeneratedValue;
@@ -14,6 +15,7 @@ import java.io.Serializable;
 @NoArgsConstructor
 @AllArgsConstructor
 @MappedSuperclass
+@EqualsAndHashCode
 public abstract class AbstractBaseEntity<K extends Serializable> implements Serializable {
 
     @Id

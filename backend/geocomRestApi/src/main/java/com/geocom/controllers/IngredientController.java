@@ -1,6 +1,7 @@
 package com.geocom.controllers;
 
 import com.geocom.dtos.IngredientDTO;
+import com.geocom.dtos.ResponseAPI;
 import com.geocom.services.IngredientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -24,9 +25,10 @@ public class IngredientController {
     }
 
     @GetMapping
-    public ResponseEntity<List<IngredientDTO>> getAllIngredients() {
+    public ResponseEntity<ResponseAPI> getAllIngredients() {
         final List<IngredientDTO> ingredients = this.ingredientService.getAllIngredients();
-        return ResponseEntity.ok(ingredients);
+        final ResponseAPI responseAPI = ResponseAPI.ok(ingredients);
+        return ResponseEntity.ok(responseAPI);
     }
 
 }
