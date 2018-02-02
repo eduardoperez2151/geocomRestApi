@@ -26,7 +26,7 @@ public class RecipeController {
     }
 
     @ApiOperation(value = "Get all recipes", notes = "Recipe Service", nickname = "getAllRecipes")
-    @ApiResponses(value = { @ApiResponse(code = 200, message = "OK")})
+    @ApiResponses(value = {@ApiResponse(code = 200, message = "OK")})
     @GetMapping
     public ResponseEntity<ResponseAPI> getAllRecipes() {
         final List<RecipeDTO> allRecipes = this.recipeService.getAllRecipes();
@@ -35,7 +35,7 @@ public class RecipeController {
     }
 
     @ApiOperation(value = "Create a Recipe", notes = "Recipe Service", nickname = "createRecipe")
-    @ApiResponses(value = { @ApiResponse(code = 200, message = "OK")})
+    @ApiResponses(value = {@ApiResponse(code = 200, message = "OK")})
     @PostMapping
     public ResponseEntity<ResponseAPI> createRecipe(
             @ApiParam(name = "recipeDto", value = "Recipe to create") @RequestBody final RecipeDTO recipeDTO) {
@@ -47,7 +47,7 @@ public class RecipeController {
     }
 
     @ApiOperation(value = "Update a Recipe", notes = "Recipe Service", nickname = "updateRecipe")
-    @ApiResponses(value = { @ApiResponse(code = 200, message = "OK")})
+    @ApiResponses(value = {@ApiResponse(code = 200, message = "OK")})
     @PatchMapping
     public ResponseEntity<ResponseAPI> UpdateRecipe(
             @ApiParam(name = "recipeDto", value = "Recipe to update") @RequestBody final RecipeDTO recipeDTO) {

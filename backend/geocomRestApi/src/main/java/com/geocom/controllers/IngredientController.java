@@ -31,8 +31,7 @@ public class IngredientController {
 
 
     @ApiOperation(value = "Get all ingredient service", notes = "Ingredient Service", nickname = "getAllIngredients")
-    @ApiResponses(value = {
-            @ApiResponse(code = 200, message = "OK")})
+    @ApiResponses(value = {@ApiResponse(code = 200, message = "OK")})
     @GetMapping
     public ResponseEntity<ResponseAPI> getAllIngredients() {
         final List<IngredientDTO> ingredients = this.ingredientService.getAllIngredients();
