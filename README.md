@@ -119,6 +119,7 @@ para ellos vamos a utilizar las properties ** spring.config.name** y  **spring.c
 **Java -jar -Dspring.config.name=application,database,security,ssl,cors,swagger -Dspring.config.location=`<ruta-absoluta`>/config/dev/   `<ruta-jar`>/geocomRestApi-0.0.1-SNAPSHOT.jar**
 
 ## Capturas
+
 ![1](https://github.com/eduardoperez2151/geocomRestApi/blob/master/images/RestApi-1.png)
 ![2](https://github.com/eduardoperez2151/geocomRestApi/blob/master/images/RestApi-2.png)
 ![3](https://github.com/eduardoperez2151/geocomRestApi/blob/master/images/Swagger-Ingredients-get.png)
