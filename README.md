@@ -19,35 +19,35 @@ El objetivo del presente proyecto es demostrar algunas capacidades técnicas y d
 
 		geocomRestApi
 		└── backend
-				├── config
-				│   └── dev
-				│       ├── keystore
-				│       └── scripts
-				└── geocomRestApi
-						├── gradle
-						│   └── wrapper
-						└── src
-								├── main
-								│   └── java
-								│       └── com
-								│           └── geocom
-								│               ├── configurations
-								│               ├── controllers
-								│               ├── converters
-								│               ├── dtos
-								│               ├── exceptions
-								│               ├── models
-								│               │   └── abstracts
-								│               ├── repositories
-								│               └── services
-								│                   └── implementation
-								└── test
-										├── java
-										│   └── com
-										│       └── geocom
-										│           ├── controllers
-										│           └── repositories
-										└── resources
+			├── config
+			│   └── dev
+			│       ├── keystore
+			│       └── scripts
+			└── geocomRestApi
+					├── gradle
+					│   └── wrapper
+					└── src
+						├── main
+						│   └── java
+						│       └── com
+						│           └── geocom
+						│               ├── configurations
+						│               ├── controllers
+						│               ├── converters
+						│               ├── dtos
+						│               ├── exceptions
+						│               ├── models
+						│               │   └── abstracts
+						│               ├── repositories
+						│               └── services
+						│                   └── implementation
+						└── test
+								├── java
+								│   └── com
+								│       └── geocom
+								│           ├── controllers
+								│           └── repositories
+								└── resources
 										
 ## Configuración
 
