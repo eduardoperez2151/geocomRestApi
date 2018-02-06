@@ -12,7 +12,7 @@ import java.util.List;
 @Entity
 @Table(name="recipe")
 @Data
-@EqualsAndHashCode
+@EqualsAndHashCode(callSuper=true)
 @NoArgsConstructor
 public class Recipe extends AbstractBaseEntity<Long> {
 
@@ -32,3 +32,4 @@ public class Recipe extends AbstractBaseEntity<Long> {
         this.ingredients = ingredients;
     }
 }
+

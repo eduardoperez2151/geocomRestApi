@@ -9,7 +9,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "ingredient")
 @Data
-@EqualsAndHashCode
+@EqualsAndHashCode(callSuper=true)
 @NoArgsConstructor
 public class Ingredient extends AbstractBaseEntity<Long> {
 
