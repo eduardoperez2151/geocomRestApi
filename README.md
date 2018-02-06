@@ -42,12 +42,12 @@ El objetivo del presente proyecto es demostrar algunas capacidades técnicas y d
 						│               └── services
 						│                   └── implementation
 						└── test
-								├── java
-								│   └── com
-								│       └── geocom
-								│           ├── controllers
-								│           └── repositories
-								└── resources
+							├── java
+							│   └── com
+							│       └── geocom
+							│           ├── controllers
+							│           └── repositories
+							└── resources
 										
 ## Configuración
 
