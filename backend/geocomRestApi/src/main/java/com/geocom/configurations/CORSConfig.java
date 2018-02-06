@@ -1,35 +1,32 @@
 package com.geocom.configurations;
 
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.cors.CorsConfiguration;
-import org.springframework.web.cors.CorsConfigurationSource;
-import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
-
-import java.util.List;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
-public class CORSConfig {
+public class CORSConfig implements WebMvcConfigurer {
 
-	@Value("${com.geocom.cors.allowedorigins}")
-	private List<String> allowedOrigins;
+    @Value("${com.geocom.cors.allowedorigins}")
+    private String[] allowedOrigins;
 
-	@Value("${com.geocom.cors.allowedmethods}")
-	private List<String> allowedMethods;
+    @Value("${com.geocom.cors.allowedmethods}")
+    private String[] allowedMethods;
 
-	@Value("${com.geocom.cors.path}")
-	private String path;
+    @Value("${com.geocom.cors.urlmappings}")
+    private String urlMappings;
+
+    @Value("${com.geocom.cors.maxage}")
+    private long maxAge;
 
 
-	@Bean
-	CorsConfigurationSource corsConfigurationSource() {
-		CorsConfiguration configuration = new CorsConfiguration();
-		configuration.setAllowedOrigins(allowedOrigins);
-		configuration.setAllowedMethods(allowedMethods);
-		final UrlBasedCorsConfigurationSource urlBasedCorsConfigurationSource = new UrlBasedCorsConfigurationSource();
-		urlBasedCorsConfigurationSource.registerCorsConfiguration(path,new CorsConfiguration().applyPermitDefaultValues());
-		return urlBasedCorsConfigurationSource;
-	}
+    @Override
+    public void addCorsMappings(final CorsRegistry registry) {
+        registry.addMapping(urlMappings)
+                .allowedMethods(allowedMethods)
+                .allowedOrigins(allowedOrigins)
+                .maxAge(maxAge);
 
+    }
 }
