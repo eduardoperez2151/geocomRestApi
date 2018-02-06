@@ -34,6 +34,15 @@ public class RecipeController {
         return ResponseEntity.ok(responseAPI);
     }
 
+    @ApiOperation(value = "Get recipes", notes = "Recipe Service", nickname = "getRecipeById")
+    @ApiResponses(value = {@ApiResponse(code = 200, message = "OK")})
+    @GetMapping(value = "/{id}")
+    public ResponseEntity<ResponseAPI> getRecipeById(@PathVariable(value = "id") final Long id) {
+        final RecipeDTO recipe = this.recipeService.getRecipeById(id);
+        final ResponseAPI responseAPI = ResponseAPI.ok(recipe);
+        return ResponseEntity.ok(responseAPI);
+    }
+
     @ApiOperation(value = "Create a Recipe", notes = "Recipe Service", nickname = "createRecipe")
     @ApiResponses(value = {@ApiResponse(code = 200, message = "OK")})
     @PostMapping

@@ -9,4 +9,5 @@ public interface RecipeService {
     RecipeDTO createRecipe(final RecipeDTO recipeDTO);
     RecipeDTO updateRecipe(final RecipeDTO recipeDTO);
     List<RecipeDTO> getAllRecipes();
+    RecipeDTO getRecipeById(final Long id);
 }
