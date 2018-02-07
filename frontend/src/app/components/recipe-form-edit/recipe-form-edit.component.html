@@ -1,0 +1,78 @@
+<ng-template #template>
+  <div [ngClass]="(modalError)?'modal-header alert-danger':'modal-header alert-success'" >
+    <h4 class="modal-title pull-left">Recipes</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    {{modalMessage}}
+  </div>
+</ng-template>
+<div class="d-flex flex-column p-4">
+  <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '14px' }"></ngx-loading>
+  <form [formGroup]="recipeForm" (ngSubmit)="onSubmit(template)">
+    <div class="form-group">
+      <label for="recipeName">Name</label>
+      <input id="recipeName" class="form-control" type="text" formControlName="name">
+      <small *ngIf="!recipeForm.controls.name.valid && submitted" class="text-danger">Recipe name is required.</small>
+    </div>
+
+    <div class="form-group">
+      <label for="recipeDescription">Description</label>
+      <input id="recipeDescription" class="form-control" type="text" formControlName="description">
+      <small *ngIf="!recipeForm.controls.description.valid && submitted" class="text-danger">Recipe description is
+        required.
+      </small>
+    </div>
+
+    <div class="form-group">
+      <label for="recipeImage">Image URL</label>
+      <input id="recipeImage" class="form-control" type="text" formControlName="imagePath">
+      <small *ngIf="!recipeForm.controls.imagePath.valid && submitted" class="text-danger">Recipe image url is
+        required.
+      </small>
+    </div>
+    <div class="my-2 p-2">
+      <div formArrayName="ingredients">
+        <div class="card my-2" *ngFor="let ingredient of ingredientFormArray.controls;let i=index"
+             [formGroupName]="i">
+          <div class="card-title p-2 alert-dark">
+            <h3><strong>Ingredient {{i + 1}}</strong></h3>
+          </div>
+
+          <div class="card-body">
+              <span class="glyphicon glyphicon-remove pull-right"
+                    *ngIf="ingredientFormArray.controls.length > 1" (click)="removeAddress(i)"></span>
+            <div class="">
+              <div class="form-group col-xs-6">
+                <label for="ingredientAmount">Amount</label>
+                <input id="ingredientAmount" class="form-control" formControlName="amount">
+                <small *ngIf="ingredient.controls.amount.dirty && submitted" class="text-danger">Ingredient amount is
+                  required.
+                </small>
+              </div>
+              <div class="form-group col-xs-6">
+                <label for="ingredientName">Name</label>
+                <input id="ingredientName" class="form-control" formControlName="name">
+                <small *ngIf="ingredient.controls.name.dirty && submitted" class="text-danger">Ingredient name is
+                  required.
+                </small>
+              </div>
+            </div>
+            <div class="margin-20 form-group">
+              <button class="btn btn-danger" type="button" (click)=removeIngredient(i)>Remove Ingredient</button>
+            </div>
+          </div>
+        </div>
+        <div class="margin-20 form-group">
+          <button class="btn btn-primary" type="button" (click)=addIngredient()>Add Ingredient</button>
+        </div>
+        <div class="margin-20 form-group">
+          <button class="btn btn-success" [disabled]="!recipeForm.valid">Save</button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+

@@ -1,0 +1,15 @@
+<div class="d-flex p-4 justify-content-center align-content-center">
+  <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '14px' }"></ngx-loading>
+  <div class="d-flex flex-row">
+    <div class="d-felx flex-column" *ngIf="recipeList">
+      <div class="d-flex flex-row">
+        <a class="btn btn-lg btn-info" routerLink="new" routerLinkActive="active">New recipe</a>
+      </div>
+      <app-recipe-item
+        *ngFor="let recipe of recipeList; let i = index"
+        [recipe]="recipe"
+        [index]="i">
+      </app-recipe-item>
+    </div>
+  </div>
+</div>

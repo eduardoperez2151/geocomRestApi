@@ -1,0 +1,17 @@
+<div class="d-flex my-4 py-2 border-bottom border-info"
+     style="cursor: pointer;"
+     [routerLink]="[recipe.id]"
+     routerLinkActive="active">
+  <div style="width: 100px;">
+    <img
+      [src]="recipe.imagePath"
+      alt="{{ recipe.name }}"
+      class="card-img-bottom"
+      style="max-height: 80px;">
+  </div>
+  <div class="d-flex flex-column p-2 justify-content-start align-content-center col">
+    <div>{{ recipe.name }}</div>
+    <div>{{ recipe.description }}</div>
+  </div>
+</div>
+
