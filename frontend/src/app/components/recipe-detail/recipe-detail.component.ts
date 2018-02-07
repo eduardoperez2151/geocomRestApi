@@ -1,22 +1,24 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, TemplateRef} from '@angular/core';
 import {ActivatedRoute, Params, Router} from '@angular/router';
 import {RecipeService} from '../../services/RecipeService';
 import {Recipe} from '../../models/Recipe';
 import {ResponseAPI} from '../../models/ResponseAPI';
+import {BsModalRef, BsModalService} from 'ngx-bootstrap';
 
 
 @Component({
   selector: 'app-recipe-detail',
   templateUrl: './recipe-detail.component.html',
   styleUrls: ['./recipe-detail.component.css'],
-  providers: [RecipeService]
+
 })
 export class RecipeDetailComponent implements OnInit {
   recipe: Recipe;
   id: number;
   loading = true;
+  modalRef: BsModalRef;
 
-  constructor(private recipeService: RecipeService, private route: ActivatedRoute) {
+  constructor(private recipeService: RecipeService, private route: ActivatedRoute, private modalService: BsModalService) {
   }
 
   ngOnInit() {
@@ -29,9 +31,8 @@ export class RecipeDetailComponent implements OnInit {
         }));
   }
 
-
-  onEditRecipe() {
-    // completar
+  openModal(template: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(template);
   }
 
   onDeleteRecipe() {

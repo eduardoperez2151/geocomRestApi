@@ -6,8 +6,7 @@ import {BsModalRef, BsModalService} from 'ngx-bootstrap';
 @Component({
   selector: 'app-recipe-form',
   templateUrl: './recipe-form.component.html',
-  styleUrls: ['./recipe-form.component.css'],
-  providers: [RecipeService]
+  styleUrls: ['./recipe-form.component.css']
 })
 export class RecipeFormComponent implements OnInit {
 
@@ -17,12 +16,19 @@ export class RecipeFormComponent implements OnInit {
   modalRef: BsModalRef;
   modalMessage = '';
   modalError = false;
+  recipeData = null;
 
-  constructor(private formBuilder: FormBuilder, private service: RecipeService, private modalService: BsModalService) {
+  constructor(private formBuilder: FormBuilder, public service: RecipeService, private modalService: BsModalService) {
   }
 
   ngOnInit() {
-    this.createForm();
+    this.recipeData = this.service.recipe;
+    if (this.recipeData) {
+      alert();
+      this.editForm(this.recipeData);
+    } else {
+      this.createForm();
+    }
   }
 
   createForm() {
@@ -63,6 +69,7 @@ export class RecipeFormComponent implements OnInit {
         this.modalMessage = 'New Recipe created';
         this.modalError = false;
         this.openModal(template);
+        this.resetForm();
 
       })
       .catch(error => {
@@ -77,4 +84,7 @@ export class RecipeFormComponent implements OnInit {
     this.modalRef = this.modalService.show(template);
   }
 
+  editForm(recipeData) {
+    alert(recipeData);
+  }
 }

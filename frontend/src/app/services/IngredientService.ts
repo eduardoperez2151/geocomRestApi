@@ -1,5 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
+import {INGREDIENT_SERVICES_URL} from './ServiceUrls';
 
 @Injectable()
 export class IngredientService {
@@ -7,6 +8,6 @@ export class IngredientService {
   constructor(private http: HttpClient) {}
 
   getAllIngredients() {
-    return this.http.get('https://localhost:8443/ingredients');
+    return this.http.get(INGREDIENT_SERVICES_URL);
   }
 }

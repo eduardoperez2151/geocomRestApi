@@ -14,6 +14,9 @@ import {NavigationBarComponent} from './components/navigation-bar/navigation-bar
 import {IngredientListComponent} from './components/ingredient-list/ingredient-list.component';
 import {IngredientFormComponent} from './components/ingredient-form/ingredient-form.component';
 import {ModalModule} from 'ngx-bootstrap';
+import {AngularFontAwesomeModule} from 'angular-font-awesome';
+import {RecipeService} from './services/RecipeService';
+import { RecipeFormEditComponent } from './components/recipe-form-edit/recipe-form-edit.component';
 
 
 @NgModule({
@@ -25,7 +28,8 @@ import {ModalModule} from 'ngx-bootstrap';
     RecipeItemComponent,
     RecipeDetailComponent,
     IngredientFormComponent,
-    RecipeFormComponent
+    RecipeFormComponent,
+    RecipeFormEditComponent
   ],
   imports: [
     LoadingModule,
@@ -34,9 +38,10 @@ import {ModalModule} from 'ngx-bootstrap';
     AppRoutingModule,
     ReactiveFormsModule,
     ModalModule.forRoot(),
+    AngularFontAwesomeModule,
     RouterModule.forRoot(navigationRoutes)
   ],
-  providers: [],
+  providers: [RecipeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

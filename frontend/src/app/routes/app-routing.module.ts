@@ -9,6 +9,7 @@ export const navigationRoutes: Routes = [
    { path: '', redirectTo: '/recipes', pathMatch: 'full' },
    { path: 'recipes', component: RecipeListComponent},
    { path: 'recipes/new', component: RecipeFormComponent },
+  { path: 'recipes/edit/:id', component: RecipeFormComponent },
    { path: 'recipes/:id', component: RecipeDetailComponent },
   { path: 'ingredients', component: IngredientListComponent},
 ];
