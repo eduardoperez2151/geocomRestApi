@@ -165,13 +165,14 @@ Luego de ser clonado o descargado el proyecto debemos navegar hacia la carpeta *
 	    │   └── img
 	    └── environments
 
-Luego debemos ejecutar el comando ***npm install** esto nos instalara todas las dependencias del proyecto y se generarar una carpeta llamada node_modules.
+Luego debemos ejecutar el comando **npm install** esto nos instalara todas las dependencias del proyecto y se generarar una carpeta llamada node_modules.
 
 ## Configuración
-En este proyecto el unico archivo que hay que modificar es ServiceUrls.ts que se encuentra en la carpeta **geocomRestApi/frontend/src/app/services. Debemos editar la url en donde esta corriendo nuestro servidor.
+En este proyecto el unico archivo que hay que modificar es ServiceUrls.ts que se encuentra en la carpeta **geocomRestApi/frontend/src/app/services**.
+Debemos editar la url en donde esta corriendo nuestra Rest Api.
 
 una vez editado este archivo ejecutamos el comando **npm start**
-por defecto levantara un servidor en el puerto 4200.
+, por defecto levantara un servidor en el puerto 4200.
 
 ## Capturas
 
